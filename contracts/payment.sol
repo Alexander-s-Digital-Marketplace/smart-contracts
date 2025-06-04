@@ -8,7 +8,6 @@ contract PayRouter {
         require(msg.value > 0, "Nothing to pay");
         require(seller != address(0), "Invalid seller address");
 
-        // Перевести ETH сразу продавцу
         (bool sent, ) = seller.call{value: msg.value}("");
         require(sent, "Failed to pay seller");
 
